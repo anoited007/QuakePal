@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Quake Pal</string>
+    <string name="tab_text_1">Incidents</string>
+    <string name="tab_text_2">Statistics</string>
+    <string name="tab_text_3">Map</string>
+    <string name="tap_for_date">Tap to Enter Date</string>
+    <string name="incidents_search">Search for Earthquakes</string>
+    <string name="about">About</string>
+
+</resources>
