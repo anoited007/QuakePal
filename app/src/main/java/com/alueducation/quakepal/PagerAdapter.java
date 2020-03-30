@@ -1,3 +1,12 @@
+
+/*
+ * Copyright (c) 2020.
+ * Name: Emmanuel Sackey
+ * Matric: S1719015
+ * Programme: Bsc(Hons) Computing
+ *
+ */
+
 package com.alueducation.quakepal;
 
 import androidx.annotation.NonNull;
@@ -19,13 +28,13 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new IncidentFragment();
+                return IncidentFragment.newInstance();
 
             case 1:
-                return new StatisticsFragment();
+                return StatisticsFragment.newInstance();
 
             case 2:
-                return new MapFragment() ;
+                return MapFragment.newInstance() ;
 
             default:
 //          This line is not likely to run but it's good to have a default in a switch case

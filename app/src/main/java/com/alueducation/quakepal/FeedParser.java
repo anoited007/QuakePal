@@ -1,3 +1,12 @@
+
+/*
+ * Copyright (c) 2020.
+ * Name: Emmanuel Sackey
+ * Matric: S1719015
+ * Programme: Bsc(Hons) Computing
+ *
+ */
+
 package com.alueducation.quakepal;
 
 import android.os.AsyncTask;
@@ -17,9 +26,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FeedParser extends AsyncTask<URL, Void, Map> {
+public class FeedParser extends AsyncTask<URL, Void, Map<String, List<Earthquake>>> {
     @Override
-    protected Map doInBackground(URL... urls) {
+    protected Map<String, List<Earthquake>> doInBackground(URL... urls) {
         int argLength = urls.length;
         Map<String, List<Earthquake>> parsedData = new HashMap<>();
         Earthquake earthquake = null;
@@ -35,6 +44,7 @@ public class FeedParser extends AsyncTask<URL, Void, Map> {
                 XmlPullParser xmlPullParser = xmlPullParserFactory.newPullParser();
                 xmlPullParser.setInput(urlConnection.getInputStream(), "UTF-8");
                 int eventType  = xmlPullParser.getEventType();
+//                Using the boolean to ensure that I am getting item from the main body.
                 boolean mainBody = false;
                 while (eventType != XmlPullParser.END_DOCUMENT){
                     if(eventType == XmlPullParser.START_TAG){
@@ -70,6 +80,7 @@ public class FeedParser extends AsyncTask<URL, Void, Map> {
                         else if (xmlPullParser.getName().equalsIgnoreCase("pubDate")){
                             if (mainBody){
                                 key = xmlPullParser.nextText();
+                                key = makeKey(key);
                             }
                         }
                     }
@@ -102,7 +113,8 @@ public class FeedParser extends AsyncTask<URL, Void, Map> {
     @Override
     protected void onPostExecute(Map map) {
         super.onPostExecute(map);
-        SharedViewModel.earthquakes.setValue(map);
+        SharedViewModel.earthquakes = map;
+        System.out.println(map);
     }
 
     private Earthquake splitDescription(@NonNull Earthquake earthquake){
@@ -123,5 +135,10 @@ public class FeedParser extends AsyncTask<URL, Void, Map> {
         earthquake.setMagnitude(magnitude);
 
         return earthquake;
+    }
+
+    private String makeKey(String key){
+//        The string starts from 5 and ends on 15
+       return key.substring(5, 16);
     }
 }

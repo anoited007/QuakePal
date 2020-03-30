@@ -1,9 +1,19 @@
+
+/*
+ * Copyright (c) 2020.
+ * Name: Emmanuel Sackey
+ * Matric: S1719015
+ * Programme: Bsc(Hons) Computing
+ *
+ */
+
 package com.alueducation.quakepal;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;

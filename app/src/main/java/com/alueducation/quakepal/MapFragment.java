@@ -1,29 +1,34 @@
+
+/*
+ * Copyright (c) 2020.
+ * Name: Emmanuel Sackey
+ * Matric: S1719015
+ * Programme: Bsc(Hons) Computing
+ *
+ */
+
 package com.alueducation.quakepal;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+
 public class MapFragment extends Fragment implements OnMapReadyCallback {
     private MapView mapView;
-    private final String  API_KEY = "AIzaSyD_GFSmWk6irk0EAPE4Ei2XuHQTts0CzAU";
 
     public MapFragment() {
         // Required empty public constructor
@@ -39,6 +44,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         View root =  inflater.inflate(R.layout.fragment_map, container, false);
         Bundle mapViewBundle = null;
         if (savedInstanceState != null) {
+            final String API_KEY = "AIzaSyD_GFSmWk6irk0EAPE4Ei2XuHQTts0CzAU";
             mapViewBundle = savedInstanceState.getBundle(API_KEY);
         }
         mapView =  root.findViewById(R.id.map);
@@ -101,7 +107,28 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        googleMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+        Collection<List<Earthquake>> earthquakes = SharedViewModel.earthquakes.values();
+        Iterator<List<Earthquake>> earthquakeIterator =  earthquakes.iterator();
+
+        while (earthquakeIterator.hasNext()){
+            for (int i = 0; i < earthquakeIterator.next().size(); i++){
+                Earthquake earthquake = earthquakeIterator.next().get(i);
+                googleMap.addMarker(createMarker(earthquake));
+            }
+        }
+
+    }
+
+    private MarkerOptions createMarker(Earthquake earthquake){
+        MarkerOptions options = new MarkerOptions();
+        String geoCordinates = earthquake.getGeoCoordinates();
+        double lat = Double.parseDouble(geoCordinates.split(",")[0]);
+        double lng = Double.parseDouble(geoCordinates.split(",")[1]);
+        LatLng latLng = new LatLng(lat, lng);
+        options.position(latLng);
+        options.title(earthquake.getTitle().split(",")[0]);
+
+        return options;
     }
 
 }

@@ -1,10 +1,19 @@
+
+/*
+ * Copyright (c) 2020.
+ * Name: Emmanuel Sackey
+ * Matric: S1719015
+ * Programme: Bsc(Hons) Computing
+ *
+ */
+
 package com.alueducation.quakepal;
 
 import androidx.annotation.NonNull;
 
-import java.time.LocalDateTime;
+import java.util.Comparator;
 
-public class Earthquake {
+public class Earthquake implements Comparable<Earthquake> {
     private String title;
     private String description;
     private String link;
@@ -21,17 +30,6 @@ public class Earthquake {
 
     }
 
-    public Earthquake(String title, String description, String link, String category, String geoCoordinates, String location, String depth, float magnitude, String dateTime) {
-        this.title = title;
-        this.description = description;
-        this.link = link;
-        this.category = category;
-        this.geoCoordinates = geoCoordinates;
-        this.location = location;
-        this.depth = depth;
-        this.magnitude = magnitude;
-        this.dateTime = dateTime;
-    }
 
     public String getTitle() {
         return title;
@@ -115,5 +113,18 @@ public class Earthquake {
                 ", category='" + category + '\'' +
                 ", geoCoordinates='" + geoCoordinates + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Earthquake o) {
+        return (int)this.magnitude - (int)o.getMagnitude();
+    }
+
+
+    class SortByDepth implements Comparator<Earthquake>{
+        @Override
+        public int compare(Earthquake o1, Earthquake o2) {
+            return 0;
+        }
     }
 }
