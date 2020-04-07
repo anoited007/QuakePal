@@ -28,15 +28,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:tabTextColor="@color/white">
+
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill"
-                android:text="@string/tab_text_1"
-                />
+                android:background="?attr/colorPrimary"
+                android:text="@string/tab_text_1" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="match_parent"

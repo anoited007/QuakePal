@@ -103,6 +103,10 @@ public class IncidentFragment extends Fragment {
                     }
                     else {
                         noEarthquake.setText("");
+                        if (mViewModel.sortedByDepth != null || mViewModel.sortedByMagnitude != null){
+                            earthquakeList.add(mViewModel.sortedByMagnitude.get(mViewModel.sortedByMagnitude.size()-1));
+                            earthquakeList.add(mViewModel.sortedByDepth.get(mViewModel.sortedByDepth.size()-1));
+                        }
                         EarthquakeAdapter earthquakeAdapter = new EarthquakeAdapter(earthquakeList);
                         incidents.setAdapter(earthquakeAdapter);
                         incidents.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -140,7 +144,6 @@ public class IncidentFragment extends Fragment {
         String day = Integer.parseInt(dateArray[0]) < 10 ? "0" + dateArray[0] : dateArray[0];
         return String.format(Locale.getDefault(), "%s %s %s", day, month, dateArray[2]);
      }
-
 
 
 }

@@ -10,6 +10,7 @@
 package com.alueducation.quakepal;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
     private MapView mapView;
@@ -107,17 +109,23 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        final String TAG = "Map Fragment";
         Collection<List<Earthquake>> earthquakes = SharedViewModel.earthquakes.values();
         Iterator<List<Earthquake>> earthquakeIterator =  earthquakes.iterator();
 
         while (earthquakeIterator.hasNext()){
-            for (int i = 0; i < earthquakeIterator.next().size(); i++){
-                Earthquake earthquake = earthquakeIterator.next().get(i);
-                googleMap.addMarker(createMarker(earthquake));
+
+                try {
+                    for (int i = 0; i < earthquakeIterator.next().size(); i++) {
+                        Earthquake earthquake = earthquakeIterator.next().get(i);
+                        googleMap.addMarker(createMarker(earthquake));
+                    }
+                } catch (NoSuchElementException ex){
+                    Log.e(TAG, "The element is not available in collection");
+                }
             }
         }
 
-    }
 
     private MarkerOptions createMarker(Earthquake earthquake){
         MarkerOptions options = new MarkerOptions();

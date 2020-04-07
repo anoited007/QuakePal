@@ -73,8 +73,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "You clicked about", Toast.LENGTH_SHORT).show();
                 break;
 
-
-
+                case R.id.menuRefresh:
+                Toast.makeText(this, "You clicked refresh", Toast.LENGTH_SHORT).show();
+                break;
         }
         return true;
     }

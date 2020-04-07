@@ -11,8 +11,6 @@ package com.alueducation.quakepal;
 
 import androidx.annotation.NonNull;
 
-import java.util.Comparator;
-
 public class Earthquake implements Comparable<Earthquake> {
     private String title;
     private String description;
@@ -120,11 +118,4 @@ public class Earthquake implements Comparable<Earthquake> {
         return (int)this.magnitude - (int)o.getMagnitude();
     }
 
-
-    class SortByDepth implements Comparator<Earthquake>{
-        @Override
-        public int compare(Earthquake o1, Earthquake o2) {
-            return 0;
-        }
-    }
 }
