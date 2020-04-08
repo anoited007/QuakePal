@@ -141,4 +141,6 @@ public class FeedParser extends AsyncTask<URL, Void, Map<String, List<Earthquake
 //        The string starts from 5 and ends on 15
        return key.substring(5, 16);
     }
+
+
 }
