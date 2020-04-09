@@ -6,7 +6,7 @@
  *
  */
 
-package com.alueducation.quakepal;
+package com.alueducation.quakepal.helper;
 
 import androidx.annotation.NonNull;
 

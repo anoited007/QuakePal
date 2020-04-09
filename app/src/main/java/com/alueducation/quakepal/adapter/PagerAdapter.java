@@ -7,12 +7,16 @@
  *
  */
 
-package com.alueducation.quakepal;
+package com.alueducation.quakepal.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+
+import com.alueducation.quakepal.view.IncidentFragment;
+import com.alueducation.quakepal.view.MapFragment;
+import com.alueducation.quakepal.view.StatisticsFragment;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 

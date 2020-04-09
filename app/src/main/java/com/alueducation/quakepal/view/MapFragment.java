@@ -7,7 +7,7 @@
  *
  */
 
-package com.alueducation.quakepal;
+package com.alueducation.quakepal.view;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -16,8 +16,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
+import com.alueducation.quakepal.model.Earthquake;
+import com.alueducation.quakepal.R;
+import com.alueducation.quakepal.model.SharedViewModel;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -31,6 +36,7 @@ import java.util.NoSuchElementException;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
     private MapView mapView;
+    private SharedViewModel mViewModel;
 
     public MapFragment() {
         // Required empty public constructor
@@ -56,19 +62,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         return root;
     }
 
-//    @Override
-//    public void onCreate(Bundle savedInstanceState){
-//        super.onCreate(savedInstanceState);
-//        Bundle mapViewBundle = null;
-//        if (savedInstanceState != null) {
-//            mapViewBundle = savedInstanceState.getBundle(API_KEY);
-//        }
-//
-//        mapView =  findViewById(R.id.map);
-//        mapView.onCreate(mapViewBundle);
-//        mapView.getMapAsync(this);
-//
-//    }
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mViewModel = ViewModelProviders.of(this).get(SharedViewModel.class);
+    }
 
     @Override
     public void onResume() {
@@ -110,7 +108,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         final String TAG = "Map Fragment";
-        Collection<List<Earthquake>> earthquakes = SharedViewModel.earthquakes.values();
+        Collection<List<Earthquake>> earthquakes = mViewModel.getEarthquakes().values();
         Iterator<List<Earthquake>> earthquakeIterator =  earthquakes.iterator();
 
         while (earthquakeIterator.hasNext()){
@@ -120,7 +118,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                         Earthquake earthquake = earthquakeIterator.next().get(i);
                         googleMap.addMarker(createMarker(earthquake));
                     }
-                } catch (NoSuchElementException ex){
+                } catch (NoSuchElementException | IndexOutOfBoundsException ex){
                     Log.e(TAG, "The element is not available in collection");
                 }
             }

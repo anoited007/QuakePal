@@ -7,12 +7,15 @@
  *
  */
 
-package com.alueducation.quakepal;
+package com.alueducation.quakepal.helper;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+
+import com.alueducation.quakepal.model.Earthquake;
+import com.alueducation.quakepal.model.SharedViewModel;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;

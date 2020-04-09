@@ -18,7 +18,7 @@
     <string name="empty_date_alert_title">Empty Date</string>
     <string name="empty_date_alert_msg">You haven\'t chosen a value for date. Select the date before clicking the search button.</string>
     <string name="empty_date_alert_ok">OK</string>
-    <string name="no_earthquakes">There were no earthquakes during this particular time.</string>
+    <string name="no_earthquakes">There were no earthquakes on this particular day.</string>
     <string name="refresh_data">Refresh Data</string>
     <string name="summary_statistics">Summary Statistics</string>
 </resources>

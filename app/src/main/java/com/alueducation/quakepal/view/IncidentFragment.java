@@ -6,12 +6,13 @@
  *
  */
 
-package com.alueducation.quakepal;
+package com.alueducation.quakepal.view;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.alueducation.quakepal.model.Earthquake;
+import com.alueducation.quakepal.adapter.EarthquakeAdapter;
+import com.alueducation.quakepal.R;
+import com.alueducation.quakepal.model.SharedViewModel;
 
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
@@ -103,9 +109,14 @@ public class IncidentFragment extends Fragment {
                     }
                     else {
                         noEarthquake.setText("");
-                        if (mViewModel.sortedByDepth != null || mViewModel.sortedByMagnitude != null){
-                            earthquakeList.add(mViewModel.sortedByMagnitude.get(mViewModel.sortedByMagnitude.size()-1));
-                            earthquakeList.add(mViewModel.sortedByDepth.get(mViewModel.sortedByDepth.size()-1));
+                        if (mViewModel.getSortedByDepth() != null || mViewModel.getSortedByMagnitude() != null){
+                            try {
+                                earthquakeList.add(mViewModel.getSortedByMagnitude().get(mViewModel.getSortedByMagnitude().size()-1));
+                                earthquakeList.add(mViewModel.getSortedByDepth().get(mViewModel.getSortedByDepth().size()-1));
+                            }catch (Exception ex){
+                                Log.e("Incident fragment", ex.toString());
+                            }
+
                         }
                         EarthquakeAdapter earthquakeAdapter = new EarthquakeAdapter(earthquakeList);
                         incidents.setAdapter(earthquakeAdapter);

@@ -6,7 +6,7 @@
  *
  */
 
-package com.alueducation.quakepal;
+package com.alueducation.quakepal.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +15,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.alueducation.quakepal.R;
+import com.alueducation.quakepal.model.Earthquake;
 
 import java.util.List;
 

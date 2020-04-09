@@ -6,7 +6,7 @@
  *
  */
 
-package com.alueducation.quakepal;
+package com.alueducation.quakepal.view;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +17,12 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+
+import com.alueducation.quakepal.helper.DoubleStatistics;
+import com.alueducation.quakepal.model.Earthquake;
+import com.alueducation.quakepal.helper.IntegerStatistics;
+import com.alueducation.quakepal.R;
+import com.alueducation.quakepal.model.SharedViewModel;
 
 import java.util.List;
 import java.util.Map;
@@ -42,7 +48,7 @@ public class StatisticsFragment extends Fragment {
     }
 
     private Integer depthToInt(String depth){
-        depth = depth.replace(" km", "");
+        depth = depth.replace(" km", "").trim();
         try {
              return Integer.parseInt(depth);
         }catch (Exception ex){
@@ -66,15 +72,10 @@ public class StatisticsFragment extends Fragment {
 
         for (Earthquake earthquake : earthquakeLIst) {
             magnitudeStats.accept(earthquake.getMagnitude());
+
             if (depthToInt(earthquake.getDepth()) != -1){
                 depthStats.accept(depthToInt(earthquake.getDepth()));
             }
         }
-
-
-
-
-
-
     }
 }

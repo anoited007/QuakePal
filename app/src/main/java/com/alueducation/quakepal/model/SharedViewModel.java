@@ -6,11 +6,14 @@
  *
  */
 
-package com.alueducation.quakepal;
+package com.alueducation.quakepal.model;
 
 import android.util.Log;
 
 import androidx.lifecycle.ViewModel;
+
+import com.alueducation.quakepal.helper.FeedParser;
+import com.alueducation.quakepal.view.IncidentFragment;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -21,16 +24,16 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public class SharedViewModel extends ViewModel {
-     static Map<String, List<Earthquake>> earthquakes;
-     List<Earthquake> sortedByDepth;
-     List<Earthquake> sortedByMagnitude;
+     public static Map<String, List<Earthquake>> earthquakes;
+     private List<Earthquake> sortedByDepth;
+     private List<Earthquake> sortedByMagnitude;
 
 
      public SharedViewModel(){
          loadData();
      }
 
-     Map<String, List<Earthquake>> getEarthquakes(){
+     public Map<String, List<Earthquake>> getEarthquakes(){
          if (earthquakes == null){
              loadData();
              System.out.println(earthquakes);
@@ -59,4 +62,11 @@ private void loadData(){
         });
     }
 
+    public List<Earthquake> getSortedByDepth() {
+        return sortedByDepth;
+    }
+
+    public List<Earthquake> getSortedByMagnitude() {
+        return sortedByMagnitude;
+    }
 }
