@@ -21,4 +21,14 @@
     <string name="no_earthquakes">There were no earthquakes on this particular day.</string>
     <string name="refresh_data">Refresh Data</string>
     <string name="summary_statistics">Summary Statistics</string>
+
+    <string-array name="stats_descriptions">
+        <item>Number of Earthquakes</item>
+        <item>Maximum Magnitude</item>
+        <item>Maximum Depth</item>
+        <item>Average Magnitude</item>
+        <item>Average Depth</item>
+    </string-array>
+
+
 </resources>

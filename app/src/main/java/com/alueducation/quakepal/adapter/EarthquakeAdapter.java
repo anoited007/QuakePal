@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alueducation.quakepal.MainActivity;
 import com.alueducation.quakepal.R;
 import com.alueducation.quakepal.model.Earthquake;
 
@@ -57,5 +58,7 @@ public class EarthquakeAdapter extends RecyclerView.Adapter<EarthquakeAdapter.Ea
             location = itemView.findViewById(R.id.TextView_Location_Recycler);
             magnitude = itemView.findViewById(R.id.TextView_Magnitude_Recycler);
         }
+
+
     }
 }
