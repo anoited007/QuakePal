@@ -37,14 +37,14 @@ public class EarthquakeAdapter extends RecyclerView.Adapter<EarthquakeAdapter.Ea
 
     @NonNull
     @Override
-    public EarthquakeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        CardView itemView = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.earthquake_recycler, parent, false);
+    public EarthquakeAdapter.EarthquakeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.earthquake_recycler, parent, false);
         return new EarthquakeViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull EarthquakeViewHolder holder, final int position) {
-        CardView cardView = holder.cardView;
+        View cardView = holder.cardView;
         Earthquake earthquake = earthquakeList.get(position);
         holder.title.setText(String.format(Locale.getDefault(), "Title: %s", earthquake.getTitle().split(":")[0]) );
         holder.location.setText(String.format(Locale.getDefault(), "Location: %s", earthquake.getLocation() ));
@@ -76,11 +76,11 @@ public class EarthquakeAdapter extends RecyclerView.Adapter<EarthquakeAdapter.Ea
 
     static class EarthquakeViewHolder extends RecyclerView.ViewHolder {
          TextView title, location, magnitude;
-         CardView cardView;
+         View cardView;
 
          EarthquakeViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.cardView = (CardView) itemView;
+            this.cardView = itemView;
             title = itemView.findViewById(R.id.TextView_Title_Recycler);
             location = itemView.findViewById(R.id.TextView_Location_Recycler);
             magnitude = itemView.findViewById(R.id.TextView_Magnitude_Recycler);
