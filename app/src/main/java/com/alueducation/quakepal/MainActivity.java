@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         TabLayout tabLayout = findViewById(R.id.tabs);
         final ViewPager viewPager = findViewById(R.id.viewpager);
-        final PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(),
+        final PagerAdapter pagerAdapter = new PagerAdapter(this, getSupportFragmentManager(),
                 tabLayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -53,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
 
     }
 

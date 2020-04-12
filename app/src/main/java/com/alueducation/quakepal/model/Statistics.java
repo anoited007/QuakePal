@@ -9,16 +9,16 @@
 package com.alueducation.quakepal.model;
 
 public class Statistics {
-    private Integer value;
+    private double value;
     private String description;
 
     public Statistics(){}
 
-    public Integer getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(double value) {
         this.value = value;
     }
 

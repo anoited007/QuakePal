@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2020.
+  ~ Name: Emmanuel Sackey
+  ~ Matric: S1719015
+  ~ Programme: Bsc(Hons) Computing
+  ~
+  -->
+
+<resources>
+    <dimen name="card_corner" >10dp</dimen>
+    <dimen name="card_elevation">5dp</dimen>
+    <dimen name="card_margin">10dp</dimen>
+    <dimen name="card_title_incidents">25sp</dimen>
+    <dimen name="card_info_incidents">20sp</dimen>
+
+
+</resources>

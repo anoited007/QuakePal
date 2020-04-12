@@ -16,13 +16,12 @@ public class IntegerStatistics {
 
         private int count;
         private int sum;
-        private int min = Integer.MIN_VALUE; //Initialise the minimum value to the lowest it can be.
-        private int max = Integer.MAX_VALUE; //Initialise the maximum value to the highest it can be.
+        private int min = Integer.MAX_VALUE;
+        private int max = Integer.MIN_VALUE;
 
         public IntegerStatistics(){
 
         }
-
 
         public void accept(int value) {
             ++count;
@@ -54,7 +53,7 @@ public class IntegerStatistics {
         @Override
         public String toString() {
             return String.format(Locale.getDefault(),
-                    "{count=%d, sum=%f, min=%f, average=%f, max=%f}",
+                    "{count=%d, sum=%d, min=%d, average=%.2f, max=%d}",
                     getCount(),
                     getSum(),
                     getMin(),

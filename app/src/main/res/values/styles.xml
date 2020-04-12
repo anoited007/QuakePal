@@ -8,4 +8,28 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="padding">
+        <item name="android:padding">30dp</item>
+    </style>
+
+    <style name="large_text">
+        <item name="android:textSize">50sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:padding">30dp</item>
+    </style>
+
+    <style name="stat_description">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:padding">30dp</item>
+    </style>
+
+    <style name="incidents">
+        <item name="android:padding">@dimen/card_margin</item>
+
+    </style>
+
+
+
 </resources>

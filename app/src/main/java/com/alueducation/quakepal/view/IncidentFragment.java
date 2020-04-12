@@ -24,9 +24,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alueducation.quakepal.adapter.onItemClickListener;
 import com.alueducation.quakepal.model.Earthquake;
 import com.alueducation.quakepal.adapter.EarthquakeAdapter;
 import com.alueducation.quakepal.R;
@@ -40,7 +42,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class IncidentFragment extends Fragment {
+public class IncidentFragment extends Fragment implements onItemClickListener {
 
     private SharedViewModel mViewModel;
     private TextView dateSelect;
@@ -119,13 +121,24 @@ public class IncidentFragment extends Fragment {
 
                         }
                         EarthquakeAdapter earthquakeAdapter = new EarthquakeAdapter(earthquakeList);
-                        incidents.setAdapter(earthquakeAdapter);
+                        earthquakeAdapter.setListener(new EarthquakeAdapter.Listener() {
+                                                          @Override
+                                                          public void onClick(int position) {
+                                                            System.out.println("Click is working");
+                                                          }
+                                                      });
+                                incidents.setAdapter(earthquakeAdapter);
                         incidents.setLayoutManager(new LinearLayoutManager(getContext()));
+                        incidents.setItemAnimator(new DefaultItemAnimator());
+
+
                     }
 
                 }
+
             }
         });
+
         return incidentRoot;
     }
 
@@ -134,11 +147,15 @@ public class IncidentFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(SharedViewModel.class);
        Map<String, List<Earthquake>> earthquakes = mViewModel.getEarthquakes();
-        if (earthquakes != null) {
-            Collection<List<Earthquake>> earthquakeList = mViewModel.getEarthquakes().values();
-            EarthquakeAdapter earthquakeAdapter = new EarthquakeAdapter(toList(earthquakeList));
-            incidents.setAdapter(earthquakeAdapter);
-        }
+
+
+//       Prevent details from showing on launch
+//        if (earthquakes != null) {
+//            Collection<List<Earthquake>> earthquakeList = mViewModel.getEarthquakes().values();
+//            EarthquakeAdapter earthquakeAdapter = new EarthquakeAdapter(toList(earthquakeList));
+//            incidents.setAdapter(earthquakeAdapter);
+//            incidents.setLayoutManager(new LinearLayoutManager(getContext()));
+//        }
      }
 
      public static List<Earthquake> toList(Collection<List<Earthquake>> collection){
@@ -157,4 +174,9 @@ public class IncidentFragment extends Fragment {
      }
 
 
+    @Override
+    public void OnItemClicked(View view, int position) {
+        System.out.println("Click is working ");
+        Log.e("Click", "Click is working");
+    }
 }

@@ -9,6 +9,8 @@
 
 package com.alueducation.quakepal.adapter;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -21,10 +23,12 @@ import com.alueducation.quakepal.view.StatisticsFragment;
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
     private int numOfTabs;
+    private final Context context;
 
 
-    public PagerAdapter(FragmentManager fm, int numOfTabs){
+    public PagerAdapter(Context context, FragmentManager fm, int numOfTabs){
         super(fm);
+        this.context = context;
         this.numOfTabs = numOfTabs;
     }
 

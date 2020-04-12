@@ -17,8 +17,10 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alueducation.quakepal.adapter.StatisticsCardAdapter;
 import com.alueducation.quakepal.helper.DoubleStatistics;
 import com.alueducation.quakepal.model.Earthquake;
 import com.alueducation.quakepal.helper.IntegerStatistics;
@@ -64,10 +66,22 @@ public class StatisticsFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        List<Statistics> statisticsList = new ArrayList<>();
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(SharedViewModel.class);
-        Map<String, List<Earthquake>> earthquakes = mViewModel.getEarthquakes();
+        displayStatistics();
+    }
+
+    private void displayStatistics(){
+        Map<String, List<Earthquake>> earthquakes;
+        if (mViewModel == null){
+            mViewModel = ViewModelProviders.of(this).get(SharedViewModel.class);
+           earthquakes = mViewModel.getEarthquakes();
+        }
+        else {
+            earthquakes = mViewModel.getEarthquakes();
+        }
+
+        List<Statistics> statisticsList = new ArrayList<>();
         List<Earthquake> earthquakeList = IncidentFragment.toList(earthquakes.values());
 //        Use lambda expression to get the data and compute summary stats.
 //        Abandoning lambda because it require API level 24 at least.
@@ -84,8 +98,56 @@ public class StatisticsFragment extends Fragment {
             }
         }
 
+        String[] descriptions = getResources().getStringArray(R.array.stats_descriptions);
+        for (int i = 0; i < descriptions.length; i++){
+            Statistics statistics = new Statistics();
+            statistics.setDescription(descriptions[i]);
+
+            switch (i){
+                case 0:
+                    statistics.setValue(magnitudeStats.getCount());
+                    statisticsList.add(statistics);
+                    break;
+
+                case 1:
+                    statistics.setValue(magnitudeStats.getMax());
+                    statisticsList.add(statistics);
+                    break;
+
+                case 2:
+                    statistics.setValue(depthStats.getMax());
+                    statisticsList.add(statistics);
+                    break;
+
+                case 3:
+                    statistics.setValue(magnitudeStats.getAverage());
+                    statisticsList.add(statistics);
+                    break;
+
+                case 4:
+                    statistics.setValue(depthStats.getAverage());
+                    statisticsList.add(statistics);
+                    break;
 
 
+                case 5:
+                    statistics.setValue(magnitudeStats.getMin());
+                    statisticsList.add(statistics);
+                    break;
 
+                case 6:
+                    statistics.setValue(depthStats.getMin());
+                    statisticsList.add(statistics);
+                    break;
+
+                default:
+                    break;
+
+            }
+
+        }
+        StatisticsCardAdapter statisticsCardAdapter = new StatisticsCardAdapter(statisticsList);
+        statistics.setAdapter(statisticsCardAdapter);
+        statistics.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 }

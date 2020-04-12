@@ -15,8 +15,10 @@ import java.util.Locale;
 public class DoubleStatistics {
     private int count;
     private double sum;
-    private double min = Double.NEGATIVE_INFINITY; //Initialise the minimum value to the lowest it can be.
-    private double max = Double.POSITIVE_INFINITY; //Initialise the maximum value to the highest it can be.
+    // Ensure the initial minimum value is set to the maximum double available to ensure that the next element becomes the min
+    // and hence force further comparisons.
+    private double min = Double.MAX_VALUE;
+    private double max = Double.MIN_VALUE;
 
     public DoubleStatistics(){
 
@@ -53,7 +55,7 @@ public class DoubleStatistics {
     @Override
     public String toString() {
         return String.format(Locale.getDefault(),
-                "{count=%d, sum=%f, min=%f, average=%f, max=%f}",
+                "{count=%d, sum=%.2f, min=%.2f, average=%.2f, max=%.2f}",
                 getCount(),
                 getSum(),
                 getMin(),

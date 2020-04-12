@@ -42,10 +42,8 @@ public class SharedViewModel extends ViewModel {
      }
 
 
-//     remove type checking  warning when assigning result to earthquakes.
 private void loadData(){
          final String TAG = "SharedViewModel";
-        List<Earthquake> earthquakeList;
         try {
             earthquakes = new FeedParser().execute(new URL( "https://quakes.bgs.ac.uk/feeds/WorldSeismology.xml")).get();
         } catch (MalformedURLException | InterruptedException | ExecutionException e) {

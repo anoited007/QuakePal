@@ -37,7 +37,7 @@ public class StatisticsCardAdapter extends RecyclerView.Adapter<StatisticsCardAd
     @Override
     public void onBindViewHolder(@NonNull StatisticsCardAdapter.StatisticsViewHolder holder, int position) {
         Statistics statistics = summaryStatistics.get(position);
-        holder.value.setText(statistics.getValue());
+        holder.value.setText(statistics.getValue().toString());
         holder.description.setText(statistics.getDescription());
     }
 
