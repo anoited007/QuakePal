@@ -85,6 +85,39 @@ public class EarthquakeDetailActivity extends MenuActivity implements OnMapReady
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (mapView != null){
+            mapView.onResume();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mapView != null){
+            mapView.onPause();
+        }
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        if (mapView != null){
+            mapView.onLowMemory();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mapView != null){
+            mapView.onDestroy();
+        }
+    }
+
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         return true;
