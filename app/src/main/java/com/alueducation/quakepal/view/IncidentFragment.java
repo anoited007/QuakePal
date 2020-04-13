@@ -135,6 +135,7 @@ public class IncidentFragment extends Fragment {
                         incidents.setLayoutManager(new LinearLayoutManager(getContext()));
                         incidents.setItemAnimator(new DefaultItemAnimator());
 
+
                     }
                 }
             }

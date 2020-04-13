@@ -32,7 +32,7 @@ public class EarthquakeDetailActivity extends MenuActivity implements OnMapReady
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-         TextView  location, category, cordinates, link, magnitude, depth;
+         TextView  location, category, cordinates, link, magnitude, depth, date;
         final String TAG = "EARTHQUAKE DETAILS";
         super.onCreate(savedInstanceState);
 
@@ -40,7 +40,7 @@ public class EarthquakeDetailActivity extends MenuActivity implements OnMapReady
         Toolbar toolbar =  findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(toolbar);
-
+        date = findViewById(R.id.TextView_Date_Detail);
         location = findViewById(R.id.TextView_Location_Detail);
         category = findViewById(R.id.TextView_Category_Detail);
         cordinates = findViewById(R.id.TextView_GeoCordinates_Detail);
@@ -51,6 +51,7 @@ public class EarthquakeDetailActivity extends MenuActivity implements OnMapReady
        try {
            earthquake = (Earthquake) getIntent().getSerializableExtra("earthquake");
            if (earthquake != null) {
+               date.setText(String.format(Locale.getDefault(), "Date and Time: %s", earthquake.getDateTime()));
                location.setText(String.format(Locale.getDefault(), "Location: %s ", earthquake.getLocation()));
                category.setText(String.format(Locale.getDefault(), "Category: %s ", earthquake.getCategory()));
                cordinates.setText(String.format(Locale.getDefault(), "Geo-cordinates: %s ", earthquake.getGeoCoordinates()));

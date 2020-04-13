@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.alueducation.quakepal.R;
 import com.alueducation.quakepal.view.AboutActivity;
@@ -52,10 +53,13 @@ public class MenuActivity extends AppCompatActivity {
                 try {
                     System.out.println("Refreshing data");
                     new FeedParser().execute(new URL( url));
-
+                    Toast toast = Toast.makeText(getApplicationContext(), "Data has been refreshed successfully", Toast.LENGTH_LONG);
+                    toast.show();
                     System.out.println("Data refreshed");
                 } catch (MalformedURLException ex){
                     Log.e(TAG, ex.toString());
+                    Toast toast = Toast.makeText(getApplicationContext(), "An error occurred", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
 
                 break;
