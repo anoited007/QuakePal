@@ -10,13 +10,18 @@ package com.alueducation.quakepal.helper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.alueducation.quakepal.R;
+import com.alueducation.quakepal.view.AboutActivity;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -37,11 +42,22 @@ public class MenuActivity extends AppCompatActivity {
 
         switch(item.getItemId()){
             case R.id.menuAbout:
-                Toast.makeText(this, "You clicked about", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, AboutActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.menuRefresh:
-                Toast.makeText(this, "You clicked refresh", Toast.LENGTH_SHORT).show();
+                String url = "https://quakes.bgs.ac.uk/feeds/WorldSeismology.xml";
+                final String TAG = "Refresh Menu";
+                try {
+                    System.out.println("Refreshing data");
+                    new FeedParser().execute(new URL( url));
+
+                    System.out.println("Data refreshed");
+                } catch (MalformedURLException ex){
+                    Log.e(TAG, ex.toString());
+                }
+
                 break;
         }
         return true;

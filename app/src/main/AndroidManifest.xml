@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".helper.MenuActivity"></activity>
+        <activity android:name=".view.AboutActivity"></activity>
+        <activity android:name=".helper.MenuActivity" />
         <activity android:name=".view.EarthquakeDetailActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

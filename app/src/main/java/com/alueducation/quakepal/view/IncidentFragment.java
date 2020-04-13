@@ -148,15 +148,6 @@ public class IncidentFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(SharedViewModel.class);
        Map<String, List<Earthquake>> earthquakes = mViewModel.getEarthquakes();
-
-
-//       Prevent details from showing on launch
-//        if (earthquakes != null) {
-//            Collection<List<Earthquake>> earthquakeList = mViewModel.getEarthquakes().values();
-//            EarthquakeAdapter earthquakeAdapter = new EarthquakeAdapter(toList(earthquakeList));
-//            incidents.setAdapter(earthquakeAdapter);
-//            incidents.setLayoutManager(new LinearLayoutManager(getContext()));
-//        }
      }
 
      public static List<Earthquake> toList(Collection<List<Earthquake>> collection){
