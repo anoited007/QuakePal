@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2020.
+  ~ Name: Emmanuel Sackey
+  ~ Matric: S1719015
+  ~ Programme: Bsc(Hons) Computing
+  ~
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.EarthquakeDetailActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <ImageView
+        android:id="@+id/ImageView_Background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/image_height"
+        android:contentDescription="@string/image_description"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/green_background" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/details_earthquake"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="@dimen/card_title_incidents"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/TextView_Location_Detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="273dp"
+        style="@style/earthquake_details"
+        />
+
+    <TextView
+        android:id="@+id/TextView_Category_Detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="317dp"
+        style="@style/earthquake_details"
+
+        />
+
+    <TextView
+        android:id="@+id/TextView_GeoCordinates_Detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="356dp"
+        style="@style/earthquake_details"
+
+        />
+
+    <TextView
+        android:id="@+id/TextView_Magnitude_Detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="395dp"
+        style="@style/earthquake_details"
+
+        />
+
+    <TextView
+        android:id="@+id/TextView_Depth_Detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="426dp"
+        style="@style/earthquake_details"
+
+        />
+
+    <TextView
+        android:id="@+id/TextView_Link_Detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="89dp"
+        tools:layout_editor_absoluteY="457dp"
+        style="@style/earthquake_details"
+
+        />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/MapView_Map_Details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="505dp" />
+</LinearLayout>

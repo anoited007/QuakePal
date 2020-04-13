@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alueducation.quakepal.R;
@@ -61,7 +60,6 @@ public class EarthquakeAdapter extends RecyclerView.Adapter<EarthquakeAdapter.Ea
 
     }
 
-
     @Override
     public int getItemCount() {
         return earthquakeList.size();
@@ -70,9 +68,6 @@ public class EarthquakeAdapter extends RecyclerView.Adapter<EarthquakeAdapter.Ea
     public void setListener(Listener listener){
         this.listener = listener;
     }
-
-
-
 
     static class EarthquakeViewHolder extends RecyclerView.ViewHolder {
          TextView title, location, magnitude;
@@ -85,7 +80,5 @@ public class EarthquakeAdapter extends RecyclerView.Adapter<EarthquakeAdapter.Ea
             location = itemView.findViewById(R.id.TextView_Location_Recycler);
             magnitude = itemView.findViewById(R.id.TextView_Magnitude_Recycler);
         }
-
-
      }
 }

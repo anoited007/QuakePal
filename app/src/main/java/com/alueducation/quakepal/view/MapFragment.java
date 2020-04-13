@@ -58,7 +58,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mapView =  root.findViewById(R.id.map);
         mapView.onCreate(mapViewBundle);
         mapView.getMapAsync(this);
-        mapView = root.findViewById(R.id.map);
         return root;
     }
 
@@ -125,7 +124,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
 
 
-    private MarkerOptions createMarker(Earthquake earthquake){
+    static MarkerOptions createMarker(Earthquake earthquake){
         MarkerOptions options = new MarkerOptions();
         String geoCordinates = earthquake.getGeoCoordinates();
         double lat = Double.parseDouble(geoCordinates.split(",")[0]);

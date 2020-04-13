@@ -11,6 +11,7 @@ package com.alueducation.quakepal.view;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,7 +29,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.alueducation.quakepal.adapter.onItemClickListener;
 import com.alueducation.quakepal.model.Earthquake;
 import com.alueducation.quakepal.adapter.EarthquakeAdapter;
 import com.alueducation.quakepal.R;
@@ -42,7 +42,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class IncidentFragment extends Fragment implements onItemClickListener {
+public class IncidentFragment extends Fragment {
 
     private SharedViewModel mViewModel;
     private TextView dateSelect;
@@ -50,6 +50,7 @@ public class IncidentFragment extends Fragment implements onItemClickListener {
     private Button filterByDate;
 
     public static IncidentFragment newInstance() {
+
         return new IncidentFragment();
     }
 
@@ -104,7 +105,7 @@ public class IncidentFragment extends Fragment implements onItemClickListener {
                    emptyDateAlert.show();
                 }
                 else {
-                    List<Earthquake> earthquakeList = mViewModel.getEarthquakes().get(key);
+                    final List<Earthquake> earthquakeList = mViewModel.getEarthquakes().get(key);
                     TextView noEarthquake = incidentRoot.findViewById(R.id.TextView_NoEarthquake);
                     if (earthquakeList == null) {
                         noEarthquake.setText(R.string.no_earthquakes);
@@ -124,18 +125,18 @@ public class IncidentFragment extends Fragment implements onItemClickListener {
                         earthquakeAdapter.setListener(new EarthquakeAdapter.Listener() {
                                                           @Override
                                                           public void onClick(int position) {
-                                                            System.out.println("Click is working");
+                                                            Intent intent = new Intent(getActivity(), EarthquakeDetailActivity.class);
+                                                            Earthquake earthquake = earthquakeList.get(position);
+                                                            intent.putExtra("earthquake", earthquake);
+                                                            startActivity(intent);
                                                           }
                                                       });
                                 incidents.setAdapter(earthquakeAdapter);
                         incidents.setLayoutManager(new LinearLayoutManager(getContext()));
                         incidents.setItemAnimator(new DefaultItemAnimator());
 
-
                     }
-
                 }
-
             }
         });
 
@@ -173,10 +174,4 @@ public class IncidentFragment extends Fragment implements onItemClickListener {
         return String.format(Locale.getDefault(), "%s %s %s", day, month, dateArray[2]);
      }
 
-
-    @Override
-    public void OnItemClicked(View view, int position) {
-        System.out.println("Click is working ");
-        Log.e("Click", "Click is working");
-    }
 }

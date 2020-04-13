@@ -46,7 +46,7 @@ public class IntegerStatistics {
             return max;
         }
         public final double getAverage() {
-            return getCount() > 0 ? getSum() / getCount() : 0.0;
+            return Math.round(getCount() > 0 ? (double)getSum() / getCount() : 0.0) ;
         }
 
         @NonNull

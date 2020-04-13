@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
         app:cardElevation="@dimen/card_elevation"
-        app:cardBackgroundColor="@color/card"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
         app:cardCornerRadius="@dimen/card_corner"
         >
 

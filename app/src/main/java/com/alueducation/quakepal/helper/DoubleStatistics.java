@@ -41,14 +41,14 @@ public class DoubleStatistics {
     }
 
     public double getMin() {
-        return min;
+        return Math.round(min);
     }
 
     public double getMax() {
-        return max;
+        return Math.round(max);
     }
     public final double getAverage() {
-        return getCount() > 0 ? getSum() / getCount() : 0.0;
+        return Math.round(getCount() > 0 ? getSum() / getCount() : 0.0);
     }
 
     @NonNull

@@ -11,7 +11,9 @@ package com.alueducation.quakepal.model;
 
 import androidx.annotation.NonNull;
 
-public class Earthquake implements Comparable<Earthquake> {
+import java.io.Serializable;
+
+public class Earthquake implements Comparable<Earthquake>, Serializable {
     private String title;
     private String description;
     private String link;
@@ -27,8 +29,6 @@ public class Earthquake implements Comparable<Earthquake> {
     public Earthquake(){
 
     }
-
-
     public String getTitle() {
         return title;
     }
