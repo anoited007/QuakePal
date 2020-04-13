@@ -7,7 +7,7 @@
   -->
 
 <resources>
-    <string name="matric_number">S1719015</string>
+    <string name="matric_number">Matric Number: S1719015</string>
     <string name="name">Emmanuel Sackey</string>
     <string name="app_name">Quake Pal</string>
     <string name="tab_text_1">Incidents</string>
@@ -26,7 +26,7 @@
     <string name="image_description">Just a random background image</string>
     <string name="details_earthquake">Details of selected earthquake</string>
     <string name="about_app">
-        The QuakePal app was developed by Emmanuel Sackey(S1719015) as part of the assessment for Mobile Platform Development module.
+        The QuakePal app was developed by Emmanuel Sackey with matric number S1719015 as part of the assessment for Mobile Platform Development module.
     </string>
     <string name="about_quakepal">About Quakepal</string>
 

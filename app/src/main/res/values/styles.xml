@@ -44,5 +44,11 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="matric">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
 
 </resources>
